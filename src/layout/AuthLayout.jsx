@@ -31,7 +31,7 @@ const AuthLayout = ({children}) => {
 
         tl.current = gsap.timeline({ paused: true });
         tl.current.to(imageRef.current, {
-            scale: 1.1,
+            scale: 1.08,
             duration: 0.3,
             ease: "power2.out"
         });
