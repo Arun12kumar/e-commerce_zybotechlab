@@ -30,8 +30,8 @@ const AuthLayout = ({children}) => {
         });
 
         tl.current = gsap.timeline({ paused: true });
-        tl.current.from(imageRef.current, {
-            scale: 0.98,
+        tl.current.to(imageRef.current, {
+            scale: 1.1,
             duration: 0.3,
             ease: "power2.out"
         });
@@ -42,8 +42,8 @@ const AuthLayout = ({children}) => {
     <div ref={wrapperRef}  className="min-h-screen">
       <div ref={contentRef}>
         <Header />
-        <div className="h-[100vh] bg-blue-200 flex flex-row ">
-            <div className="w-[50vw] h-full relative">
+        <div className="h-[100vh] bg-black flex flex-row ">
+            <div className="w-[50vw] h-full relative overflow-hidden">
                 <Image ref={imageRef} src="/images/login.png" fill priority className="object-cover" alt="login" onMouseEnter={onEnter} onMouseLeave={onLeave}/>
             </div>
             <div className="w-[50vw] h-full">{children}</div>

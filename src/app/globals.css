@@ -2,10 +2,9 @@
 
 
 
-:root {
-  --background: #191919;
+@layer base {
+  :root {
+    --background: #191919;
+  }
 }
 
-@theme inline {
-  --color-background: var(--background);
-}
