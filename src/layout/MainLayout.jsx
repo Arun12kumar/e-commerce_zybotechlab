@@ -14,27 +14,16 @@ gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
 const MainLayout = ({children}) => {
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
-  const imageRef = useRef(null);
-  const tl = useRef(null);
-  const onEnter = () => tl.current.play();
-  const onLeave = () => tl.current.reverse();
 
     useGSAP(()=>{       
         
-        ScrollSmoother.create({
-            wrapper: wrapperRef.current,
-            content: contentRef.current,
-            smooth:1.2,
-            effects:true
+      ScrollSmoother.create({
+        wrapper: wrapperRef.current,
+        content: contentRef.current,
+        smooth:1.2,
+        effects:true
 
-        });
-
-        tl.current = gsap.timeline({ paused: true });
-        tl.current.to(imageRef.current, {
-            scale: 1.08,
-            duration: 0.3,
-            ease: "power2.out"
-        });
+      });
 
     },[])
 
@@ -42,7 +31,7 @@ const MainLayout = ({children}) => {
     <div ref={wrapperRef}  className="min-h-screen">
       <div ref={contentRef}>
         <Header />
-        <div className="h-[100vh] bg-primaryDarklight flex flex-row ">
+        <div className="w-screen bg-primaryDarklight px-8 lg:px-16">
             {children}
         </div>
         <Footer />

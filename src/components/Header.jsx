@@ -1,8 +1,16 @@
+"use client";
+
+import { CircleUserRound, ShoppingBag } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 import React from "react";
 
 const Header = () => {
+
+  const router = useRouter();
+
   return (
-    <div className="h-[10vh] bg-primaryDark flex items-center px-6">
+    <div className="h-[10vh] bg-primaryDark flex items-center px-15 justify-between">
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_5_1288)">
           <path
@@ -16,8 +24,19 @@ const Header = () => {
           </clipPath>
         </defs>
       </svg>
-      <div>
-        <p>Log Out</p>
+      <div className="flex flex-row gap-3 items-center text-white">
+        
+        <div className="flex items-center cursor-pointer" onClick={()=> router.push('/myorders')}>
+          <ShoppingBag />
+          <p className="text-sm">My Orders</p>
+
+        </div>
+        <div className="flex items-center cursor-pointer" onClick={()=> router.push('/login')}>
+          <CircleUserRound />
+          <p className="text-sm">Log Out</p>
+
+        </div>
+
       </div>
     </div>
   );

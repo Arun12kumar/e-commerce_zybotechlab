@@ -2,7 +2,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>my orders page</div>
+    <div className='h-[80vh]'>my orders page</div>
   )
 }
 
