@@ -26,16 +26,8 @@ const Header = () => {
       </svg>
       <div className="flex flex-row gap-3 items-center text-white">
         
-        <div className="flex items-center cursor-pointer" onClick={()=> router.push('/myorders')}>
-          <ShoppingBag />
-          <p className="text-sm">My Orders</p>
-
-        </div>
-        <div className="flex items-center cursor-pointer" onClick={()=> router.push('/login')}>
-          <CircleUserRound />
-          <p className="text-sm">Log Out</p>
-
-        </div>
+        <CircleUserRound className="cursor-pointer" onClick={()=> router.push('/myorders')}/>
+        <p className="cursor-pointer" onClick={()=> router.replace('/login')}>Log Out</p>
 
       </div>
     </div>

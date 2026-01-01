@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 const ShoeCards = () => {
     const cardRef1 = useRef(null);
@@ -16,6 +17,7 @@ const ShoeCards = () => {
     const tl = useRef(null);
     const onEnter = () => tl.current.play();
     const onLeave = () => tl.current.reverse();
+    const router = useRouter()
 
     useGSAP(() => {
         tl.current = gsap.timeline({ paused: true });
@@ -134,11 +136,24 @@ const ShoeCards = () => {
                 <p ref={titleRef} className="text-base sm:text-lg font-bold text-white ">NIKE SHOES</p>
                 <div ref={sizeRef} className="flex flex-row items-center gap-4">
                     <p className="text-white">SIZE :</p>
-                    <div className="flex gap-2">
-                        <div className="w-7 h-7 bg-[#372224] rounded-lg flex items-center justify-center text-white">1</div>
-                        <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">2</div>
-                        <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">3</div>
-                        <div className="w-6 h-6 bg-white rounded-lg flex items-center justify-center">4</div>
+                    <div className="flex gap-1">
+                        <label className="cursor-pointer">
+                            <input type="radio" name="size" className="peer hidden" />
+                            <span className="block w-7 h-7 rounded-lg bg-white flex items-center justify-center peer-checked:bg-[#372224] peer-checked:text-white">1</span>
+                        </label>
+                        <label className="cursor-pointer">
+                            <input type="radio" name="size" className="peer hidden" />
+                            <span className="block w-7 h-7 rounded-lg bg-white flex items-center justify-center peer-checked:bg-[#372224] peer-checked:text-white">2</span>
+                        </label>
+                        <label className="cursor-pointer">
+                            <input type="radio" name="size" className="peer hidden" />
+                            <span className="block w-7 h-7 rounded-lg bg-white flex items-center justify-center peer-checked:bg-[#372224] peer-checked:text-white">3</span>
+                        </label>
+                        <label className="cursor-pointer">
+                            <input type="radio" name="size" className="peer hidden" />
+                            <span className="block w-7 h-7 rounded-lg bg-white flex items-center justify-center peer-checked:bg-[#372224] peer-checked:text-white">4</span>
+                        </label>
+
                     </div>
                 </div>
                 <div ref={colorRef} className="flex flex-row items-center gap-4 opacity-0">
@@ -158,7 +173,7 @@ const ShoeCards = () => {
                         </label>
                     </div>
                 </div>
-                <button ref={buyButtonRef} className="px-5 py-3 bg-white rounded-lg text-sm font-semibold opacity-0">Buy Now</button>
+                <button ref={buyButtonRef} className="px-5 py-3 bg-white rounded-lg text-sm font-medium opacity-0" onClick={()=> router.replace('/order-success')}>Buy Now</button>
             </div>
         </div>
     );
