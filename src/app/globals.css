@@ -1,10 +1,16 @@
 @import "tailwindcss";
 
 
-
-@layer base {
-  :root {
-    --background: #191919;
-  }
+@theme {
+  --font-inter: "Inter", sans-serif; 
+  --font-roboto: "Roboto", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+  --color-primaryDark: var(--primary-dark);
 }
+
+:root {
+  --primary-dark: #191919;
+  font-family: var(--font-inter);
+}
+
 
