@@ -11,7 +11,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(useGSAP,ScrollTrigger,ScrollSmoother);
 
-const AuthLayout = ({children}) => {
+const MainLayout = ({children}) => {
   const wrapperRef = useRef(null);
   const contentRef = useRef(null);
   const imageRef = useRef(null);
@@ -42,11 +42,8 @@ const AuthLayout = ({children}) => {
     <div ref={wrapperRef}  className="min-h-screen">
       <div ref={contentRef}>
         <Header />
-        <div className="h-[100vh] bg-black flex flex-row ">
-            <div className="w-[50vw] h-full relative overflow-hidden hidden lg:block">
-                <Image ref={imageRef} src="/images/login.png" fill priority className="object-cover" alt="login" onMouseEnter={onEnter} onMouseLeave={onLeave}/>
-            </div>
-            <div className="w-screen lg:w-[50vw] h-full">{children}</div>
+        <div className="h-[100vh] bg-primaryDarklight flex flex-row ">
+            {children}
         </div>
         <Footer />
       </div>
@@ -54,4 +51,4 @@ const AuthLayout = ({children}) => {
   );
 };
 
-export default AuthLayout;
+export default MainLayout;

@@ -16,6 +16,9 @@ const Header = () => {
           </clipPath>
         </defs>
       </svg>
+      <div>
+        <p>Log Out</p>
+      </div>
     </div>
   );
 };

@@ -6,10 +6,12 @@
   --font-roboto: "Roboto", sans-serif;
   --font-orbitron: "Orbitron", sans-serif;
   --color-primaryDark: var(--primary-dark);
+  --color-primaryDarklight: var(--primary-darklight);
 }
 
 :root {
   --primary-dark: #191919;
+  --primary-darklight: #161616;
   font-family: var(--font-inter);
 }
 
