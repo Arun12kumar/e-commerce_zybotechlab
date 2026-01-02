@@ -1,15 +1,15 @@
-"use client";
+"use client"
+
 import OrderCard from "@/components/OrderCard";
 import { useOrderStore } from "@/store/useOrderStore";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React from "react";
 
 const page = () => {
   const { orderData, clearOrderData } = useOrderStore();
-  const router = useRouter();
+  
 
 
-  if (!orderData) return null;
+  if (!orderData) return (<div className="h-screen"></div>);
 
   const date = new Date(orderData.orderCreated);
   const stringDate = date.toLocaleDateString()
