@@ -1,7 +1,7 @@
 
 import { useAuthStore } from "@/store/useAuthStore";
 import axios from "axios";
-const API_BASE_URL = "https://skilltestnextjs.evidam.zybotechlab.com/api";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 
 
