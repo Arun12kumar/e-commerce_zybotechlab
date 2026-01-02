@@ -6,13 +6,15 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/Providers/AuthProvider";
+import { usePostOrder } from "@/controller/productController";
 
 const ShoeCards = ({ items }) => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedColorImages, setSelectedColorImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
-  const{token} = useAuth()
+  const { token } = useAuth();
+  const orderMutation = usePostOrder();
 
   const cardRef1 = useRef(null);
   const cardRef2 = useRef(null);
@@ -172,30 +174,42 @@ const ShoeCards = ({ items }) => {
     return selectedColor.sizes || [];
   };
 
-    const handleBuyNow = () => {
-        if (isOutOfStock) return;
-        
-        // Here you can collect selected color and size data
-        const productData = {
-            productId: items?.id,
-            productName,
-            selectedColor: selectedColor ? {
-                id: selectedColor.color_id,
-                name: selectedColor.color_name
-            } : null,
-            selectedSize,
-            price: selectedSize?.price,
-            image: getCurrentImage()
-        };
-        
-        console.log("Product data to purchase:", productData);
-        
-        if(!token){
-            router.replace('/login')
-            return;
-        }
-        router.push('/order-success');
+  const handleBuyNow = async () => {
+    if (!token) {
+      router.replace("/login");
+      return;
+    }
+    if (isOutOfStock) return;
+
+    // Here you can collect selected color and size data
+    const productData = {
+      productId: items?.id,
+      productName,
+      selectedColor: selectedColor
+        ? {
+            id: selectedColor.color_id,
+            name: selectedColor.color_name,
+          }
+        : null,
+      selectedSize,
+      price: selectedSize?.price,
+      image: getCurrentImage(),
     };
+
+    console.log("Product data to purchase:", productData);
+
+    if (!selectedSize?.variation_product_id) {
+      alert("Please select a size");
+      return;
+    }
+    try {
+      const response = await orderMutation.mutateAsync({ variation_product_id: selectedSize?.variation_product_id || items?.id });
+
+      router.push("/order-success");
+    } catch (error) {
+      alert(error, "order is fail");
+    }
+  };
 
   return (
     <div
@@ -254,7 +268,11 @@ const ShoeCards = ({ items }) => {
                     className="peer hidden"
                     disabled={!color.status || isOutOfStock}
                   />
-                  <span className={` ${getColorClassName(color.color_name)} block w-4 h-4 rounded-full peer-checked:ring-2 peer-checked:ring-white`}></span>
+                  <span
+                    className={` ${getColorClassName(
+                      color.color_name
+                    )} block w-4 h-4 rounded-full peer-checked:ring-2 peer-checked:ring-white`}
+                  ></span>
                 </label>
               ))}
             </div>

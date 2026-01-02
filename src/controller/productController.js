@@ -1,6 +1,6 @@
 import { API_URL } from "@/constant/apiURLs";
 import { axiosPrivate, axiosPublic } from "@/libs/axios";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 
 export const useGetAllProducts = () => {
@@ -9,7 +9,7 @@ export const useGetAllProducts = () => {
     queryFn: async () => {
       try {
         const res = await axiosPublic.get(API_URL.PRODUCTS_URL);
-        console.log(res.data,'test')
+        
         return res.data; 
       } catch (err) {
       
@@ -28,7 +28,7 @@ export const useGetAllOrders = () => {
     queryFn: async () => {
       try {
         const res = await axiosPrivate.get(API_URL.MY_ORDERS);
-        console.log(res.data,'test')
+        
         return res.data; 
       } catch (err) {
       
@@ -38,5 +38,35 @@ export const useGetAllOrders = () => {
       }
     },
     retry: 1, 
+  });
+};
+
+export const  usePostOrder = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async (order) => {
+      try {
+        const res = await axiosPrivate.post(API_URL.ORDER_SUCCESS, order, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        return res.data; // { success, user, message }
+
+      } catch (err) {
+      
+        const message =
+          err.response?.data?.message || err.message || "Failed to order product";
+        throw new Error(message); 
+      }
+    },
+    onSuccess: (data) => {
+      console.log(data,"order book")
+      if (data.success) {
+        queryClient.setQueryData(["orderbook"], data);
+      }
+    },
   });
 };

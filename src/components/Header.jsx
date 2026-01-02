@@ -11,8 +11,6 @@ const Header = () => {
   const router = useRouter();
   const{token,logout}= useAuth();
 
-  console.log(token,"header")
-
   return (
     <div className="h-[10vh] bg-primaryDark flex items-center px-15 justify-between">
       <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
