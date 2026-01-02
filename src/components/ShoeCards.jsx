@@ -7,6 +7,7 @@ import gsap from "gsap";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/Providers/AuthProvider";
 import { usePostOrder } from "@/controller/productController";
+import { useOrderStore } from "@/store/useOrderStore";
 
 const ShoeCards = ({ items }) => {
   const [selectedColor, setSelectedColor] = useState(null);
@@ -15,6 +16,7 @@ const ShoeCards = ({ items }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const { token } = useAuth();
   const orderMutation = usePostOrder();
+  const { setOrderData } = useOrderStore();
 
   const cardRef1 = useRef(null);
   const cardRef2 = useRef(null);
@@ -184,6 +186,7 @@ const ShoeCards = ({ items }) => {
     // Here you can collect selected color and size data
     const productData = {
       productId: items?.id,
+      product_MRP: items?.mrp,
       productName,
       selectedColor: selectedColor
         ? {
@@ -196,6 +199,7 @@ const ShoeCards = ({ items }) => {
       image: getCurrentImage(),
     };
 
+
     console.log("Product data to purchase:", productData);
 
     if (!selectedSize?.variation_product_id) {
@@ -204,7 +208,12 @@ const ShoeCards = ({ items }) => {
     }
     try {
       const response = await orderMutation.mutateAsync({ variation_product_id: selectedSize?.variation_product_id || items?.id });
-
+        setOrderData({
+        ...productData,
+        orderId: response?.order?.id,
+        orderCreated: response?.order?.created,
+        product_nam: response?.order?.order_details[0]?.product_name
+        });
       router.push("/order-success");
     } catch (error) {
       alert(error, "order is fail");

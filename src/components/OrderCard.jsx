@@ -35,7 +35,7 @@ const OrderCard = ({items}) => {
         
         {/* Price Section */}
         <div className='flex flex-col sm:flex-row sm:gap-2 items-end sm:items-center ml-2 sm:ml-0'>
-            <p className='text-[12px] sm:text-md text-white'>₹{items?.product_price}</p>
+            <p className='text-[12px] sm:text-base text-white'>₹{items?.product_price}</p>
             <p className='text-[9px] sm:text-sm line-through text-white/40'>₹{items?.product_mrp}</p>
         </div>
     </div>
