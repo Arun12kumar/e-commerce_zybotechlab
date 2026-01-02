@@ -1,2 +1,21 @@
 @import "tailwindcss";
 
+
+@theme {
+  --font-inter: "Inter", sans-serif; 
+  --font-roboto: "Roboto", sans-serif;
+  --font-orbitron: "Orbitron", sans-serif;
+  --color-primaryDark: var(--primary-dark);
+  --color-primaryDarklight: var(--primary-darklight);
+  --color-card: var(--primary-card);
+  --breakpoint-ss: 375px;
+}
+
+:root {
+  --primary-dark: #191919;
+  --primary-darklight: #161616;
+  --primary-card: #232323;
+  font-family: var(--font-inter);
+}
+
+
