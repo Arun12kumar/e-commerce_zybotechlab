@@ -29,6 +29,7 @@ const page = () => {
 
 
   return (
+    
     <div className="min-h-screen flex py-5 justify-center w-full ">
       <div className="h-auto sm:h-[50vh] w-full flex flex-col items-center space-y-4 sm:space-y-5 md:space-y-6">
         {/* SVG Icon */}

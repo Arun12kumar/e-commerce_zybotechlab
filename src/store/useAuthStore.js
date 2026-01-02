@@ -22,5 +22,6 @@ export const useAuthStore = create(
     {
       name: "auth-storage", // key in localStorage
     }
+    
   )
 );
