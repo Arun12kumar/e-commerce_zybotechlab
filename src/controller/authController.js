@@ -1,7 +1,7 @@
-// src/controllers/authController.js
+
 import {  useMutation, useQueryClient,useQuery } from "@tanstack/react-query";
-import { axiosPublic,axiosPrivate } from "@/lib/axios";
 import { API_URL } from "@/constant/apiURLs";
+import { axiosPublic } from "@/libs/axios";
 
 
 export const  useLogin = () => {
@@ -26,23 +26,10 @@ export const  useLogin = () => {
     },
     onSuccess: (data) => {
       if (data.success) {
-        queryClient.setQueryData(["auth"], data.user); // cache user
+        queryClient.setQueryData(["token"], data.user); // cache user
       }
     },
   });
 };
 
-// ✅ Logout mutation
-export const useLogout = () => {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: async () => {
-      const res = await axiosPublic.post(API_URL.ADMINLOGOUT_URL);
-      return res.data;
-    },
-    onSuccess: () => {
-      queryClient.removeQueries(["auth"]);
-    },
-  });
-};
 
