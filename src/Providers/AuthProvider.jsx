@@ -25,6 +25,7 @@ const { token, setToken, logout: storeLogout } = useAuthStore();
       setToken(data.token.access);
       queryClient.setQueryData(["token"], data.token);
     }
+    
     return data;
   };
 

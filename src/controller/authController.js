@@ -15,6 +15,7 @@ export const  useLogin = () => {
             "Content-Type": "application/json",
           },
         });
+        
         return res.data; // { success, user, message }
 
       } catch (err) {
@@ -25,8 +26,9 @@ export const  useLogin = () => {
       }
     },
     onSuccess: (data) => {
+      console.log(data,"authcontroller")
       if (data.success) {
-        queryClient.setQueryData(["token"], data.user); // cache user
+        queryClient.setQueryData(["token"], data.token); // cache user
       }
     },
   });

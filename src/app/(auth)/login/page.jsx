@@ -32,9 +32,22 @@ const page = () => {
   });
 
   const onSubmit = async(values) =>{
-    console.log("Valid phone:", values.phone_number);
-    login(values)
-    // router.replace('/')
+    try {
+      const data = await login(values); 
+      console.log(data,"login")
+      if(data?.user === false){
+        router.replace("/otp-verify");
+        return;
+      }
+      if (data?.token?.access) {
+        router.replace("/");
+      return;
+    } 
+
+    } catch (err) {
+      console.error("Login failed:", err.message);
+
+    }
   }
 
 
