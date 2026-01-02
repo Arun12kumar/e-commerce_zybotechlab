@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# E-Commerce Zybotechlab
 
-## Getting Started
+A modern, high-performance e-commerce platform built with Next.js 16, featuring premium animations and a state-of-the-art design system.
 
-First, run the development server:
+## 🚀 Setup Instructions
+
+Follow these steps to get the project running locally:
+
+### 1. Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (Latest LTS version recommended)
+- npm, yarn, or pnpm
+
+### 2. Installation
+
+Clone the repository and install the dependencies:
+
+```bash
+git clone https://github.com/Arun12kumar/e-commerce_zybotechlab.git
+cd e-commerce_zybotechlab
+npm install
+```
+
+### 3. Running the Project
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠 Tech Decisions
 
-## Learn More
+This project is built using a modern, scalable tech stack selected for performance, developer experience, and visual excellence.
 
-To learn more about Next.js, take a look at the following resources:
+### Core Framework
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **[Next.js 16](https://nextjs.org/)**: Utilizing the App Router for efficient routing and server-side rendering (SSR) capabilities.
+- **[React 19](https://react.dev/)**: Leveraging the latest React features for building interactive UIs.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Styling & Design
 
-## Deploy on Vercel
+- **[Tailwind CSS 4](https://tailwindcss.com/)**: Using the latest version of Tailwind for rapid, utility-first styling with enhanced performance and features.
+- **[Lucide React](https://lucide.dev/)**: A beautiful and consistent icon set.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Animations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **[GSAP (GreenSock Animation Platform)](https://gsap.com/)**: Chosen for complex, high-performance timeline-based animations that create a premium user experience.
+- **[@gsap/react](https://gsap.com/resources/React/)**: Official GSAP hook for React to handle safe animation cleanup.
+
+### State Management & Data Fetching
+
+- **[Zustand](https://github.com/pmndrs/zustand)**: A small, fast, and scalable bearbones state-management solution for global application state.
+- **[TanStack Query (React Query)](https://tanstack.com/query/latest)**: Powerful asynchronous state management for fetching, caching, and updating server state.
+
+### Utilities
+
+- **[Axios](https://axios-http.com/)**: For making HTTP requests to the centralized API base.
+- **[React Hook Form](https://react-hook-form.com/)**: For high-performance, flexible, and extensible forms with easy validation.
+- **[Zod](https://zod.dev/)**: For TypeScript-first schema declaration and validation.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── app/          # Next.js App Router (pages and routes)
+├── components/   # Reusable UI components
+├── controller/   # Logic for handling API interactions
+├── libs/         # Core libraries, axios instances, and auth helpers
+├── store/        # Zustand state stores
+├── constant/     # Global constants and configuration
+└── layout/       # Shared page layouts
+```
+
+---
+
+## 🔑 Environment Configuration
+
+Currently, the project uses a centralized API base URL located in `src/libs/axios.js`.
+
+> [!NOTE]
+> If you need to point to a different environment, modify the `API_BASE_URL` constant in [axios.js](file:///c:/Users/Arunkumar/Documents/GitHub/e-commerce_zybotechlab/src/libs/axios.js).
