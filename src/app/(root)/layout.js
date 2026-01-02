@@ -4,6 +4,7 @@ import MainLayout from "@/layout/MainLayout";
 import ClientProviders from "@/libs/ClientProviders";
 
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,14 +26,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MainLayout>
-          <ClientProviders>
+        <ClientProviders>
+          <MainLayout>
             {children}
-          </ClientProviders>
-        </MainLayout>
-
-          
-       
+          </MainLayout>
+        </ClientProviders>
 
       </body>
     </html>

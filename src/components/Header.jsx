@@ -1,5 +1,6 @@
 "use client";
 
+import { useAuth } from "@/Providers/AuthProvider";
 import { CircleUserRound, ShoppingBag } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -8,6 +9,9 @@ import React from "react";
 const Header = () => {
 
   const router = useRouter();
+  const{token,logout}= useAuth();
+
+  console.log(token,"header")
 
   return (
     <div className="h-[10vh] bg-primaryDark flex items-center px-15 justify-between">
@@ -25,9 +29,9 @@ const Header = () => {
         </defs>
       </svg>
       <div className="flex flex-row gap-3 items-center text-white">
-        
-        <CircleUserRound className="cursor-pointer" onClick={()=> router.push('/myorders')}/>
-        <p className="cursor-pointer" onClick={()=> router.replace('/login')}>Log Out</p>
+        {token && <CircleUserRound className="cursor-pointer" onClick={()=> router.push('/myorders')}/>}
+
+        <p className="cursor-pointer" onClick={()=>logout()}>Log Out</p>
 
       </div>
     </div>
