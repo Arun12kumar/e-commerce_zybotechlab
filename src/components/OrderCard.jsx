@@ -3,7 +3,7 @@ import React from 'react'
 
 const OrderCard = ({items}) => {
   return (
-    <div className='flex flex-row bg-card px-4 py-4 sm:px-5 sm:py-5 w-full md:w-[60vw] lg:w-[40vw] h-auto min-h-[120px] sm:min-h-[140px] md:h-[18vh] lg:h-[20vh] items-center justify-between rounded-xl'>
+    <div className='flex flex-row bg-card px-4 py-4 sm:px-5 sm:py-5 w-full md:w-[60vw] lg:w-[45vw] h-auto min-h-[120px] sm:min-h-[140px] md:h-[18vh] lg:h-[20vh] items-center justify-between rounded-xl'>
         {/* Image Container */}
         <div className='bg-primaryDark w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-full lg:w-30 rounded-lg relative overflow-hidden flex-shrink-0'>
             <Image 
@@ -28,7 +28,7 @@ const OrderCard = ({items}) => {
         
         {/* Product Info */}
         <div className='flex-1 ml-2 sm:ml-5 md:ml-6'>
-            <p className='text-sm sm:text-xl md:text-2xl text-white truncate'>{items?.product_name}</p>
+            <p className='text-sm sm:text-xl md:text-xl text-white truncate'>{items?.product_name}</p>
             <p className='text-xs sm:text-base text-white mt-1'>{items?.order_id}</p>
             <p className='text-xs sm:text-sm text-white mt-1'>{items?.created_date}</p>
         </div>

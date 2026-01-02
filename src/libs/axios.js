@@ -35,7 +35,7 @@ axiosPrivate.interceptors.response.use(
   (error) => {
     const status = error.response?.status;
 
-    if (status === 400) {
+    if (status === 401) {
       useAuthStore.getState().logout();
       window.location.href = "/login";
     }

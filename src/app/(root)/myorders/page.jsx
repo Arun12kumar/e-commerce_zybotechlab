@@ -6,8 +6,6 @@ import React from 'react'
 
 const page = () => {
   const {data:order} = useGetAllOrders();
-
-  console.log(order,"my order")
   return (
     <div className=''>
       <div className=' py-8 lg:py-17 space-y-6'>
