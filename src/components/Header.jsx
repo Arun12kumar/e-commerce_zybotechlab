@@ -30,8 +30,8 @@ const Header = () => {
       </svg>
       <div className="flex flex-row gap-3 items-center text-white">
         {token && <CircleUserRound className="cursor-pointer" onClick={()=> router.push('/myorders')}/>}
-
-        <p className="cursor-pointer" onClick={()=>logout()}>Log Out</p>
+        {token ? (<p className="cursor-pointer" onClick={()=>logout()}>Log Out</p>):(<p className="cursor-pointer" onClick={()=> router.push('/login')}>Log In</p>)}
+        
 
       </div>
     </div>

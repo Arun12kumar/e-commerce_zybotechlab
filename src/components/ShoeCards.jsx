@@ -5,12 +5,14 @@ import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/Providers/AuthProvider";
 
 const ShoeCards = ({ items }) => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedColorImages, setSelectedColorImages] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
+  const{token} = useAuth()
 
   const cardRef1 = useRef(null);
   const cardRef2 = useRef(null);
@@ -174,19 +176,24 @@ const ShoeCards = ({ items }) => {
         if (isOutOfStock) return;
         
         // Here you can collect selected color and size data
-        // const productData = {
-        //     productId: items?.id,
-        //     productName,
-        //     selectedColor: selectedColor ? {
-        //         id: selectedColor.color_id,
-        //         name: selectedColor.color_name
-        //     } : null,
-        //     selectedSize,
-        //     price: selectedSize?.price || salePrice,
-        //     image: getCurrentImage()
-        // };
+        const productData = {
+            productId: items?.id,
+            productName,
+            selectedColor: selectedColor ? {
+                id: selectedColor.color_id,
+                name: selectedColor.color_name
+            } : null,
+            selectedSize,
+            price: selectedSize?.price,
+            image: getCurrentImage()
+        };
         
-        // console.log("Product data to purchase:", productData);
+        console.log("Product data to purchase:", productData);
+        
+        if(!token){
+            router.replace('/login')
+            return;
+        }
         router.push('/order-success');
     };
 

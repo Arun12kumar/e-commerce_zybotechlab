@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 
-const OrderCard = () => {
+const OrderCard = ({items}) => {
   return (
     <div className='flex flex-row bg-card px-4 py-4 sm:px-5 sm:py-5 w-full md:w-[60vw] lg:w-[40vw] h-auto min-h-[120px] sm:min-h-[140px] md:h-[18vh] lg:h-[20vh] items-center justify-between rounded-xl'>
         {/* Image Container */}
@@ -28,14 +28,15 @@ const OrderCard = () => {
         
         {/* Product Info */}
         <div className='flex-1 ml-2 sm:ml-5 md:ml-6'>
-            <p className='text-sm sm:text-xl md:text-2xl text-white truncate'>Nike Air Max 90</p>
-            <p className='text-xs sm:text-base text-white mt-1'>UK 7,9ADA2A</p>
+            <p className='text-sm sm:text-xl md:text-2xl text-white truncate'>{items?.product_name}</p>
+            <p className='text-xs sm:text-base text-white mt-1'>{items?.order_id}</p>
+            <p className='text-xs sm:text-sm text-white mt-1'>{items?.created_date}</p>
         </div>
         
         {/* Price Section */}
         <div className='flex flex-col sm:flex-row sm:gap-2 items-end sm:items-center ml-2 sm:ml-0'>
-            <p className='text-[12px] sm:text-md text-white'>₹1,200</p>
-            <p className='text-[9px] sm:text-sm line-through text-white/40'>₹1,200</p>
+            <p className='text-[12px] sm:text-md text-white'>₹{items?.product_price}</p>
+            <p className='text-[9px] sm:text-sm line-through text-white/40'>₹{items?.product_mrp}</p>
         </div>
     </div>
   )
