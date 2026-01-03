@@ -88,7 +88,7 @@ const page = () => {
 
         {/* Verify Button */}
         <button 
-          onClick={()=> router.replace('/welcome-name')} 
+          onClick={()=> router.replace('/register')} 
           className="cursor-pointer text-black bg-white w-full h-12 md:h-14 rounded-lg text-sm md:text-base font-medium hover:bg-gray-100 transition-colors duration-200"
         >
           Verify
